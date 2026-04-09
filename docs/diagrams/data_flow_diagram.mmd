@@ -1,0 +1,60 @@
+%% FinSense - Data Flow Diagram (Level 1)
+%% Render at https://mermaid.live or export to PNG/SVG for report
+flowchart LR
+    subgraph External
+        YF[Yahoo Finance API]
+    end
+
+    subgraph FinSense System
+        subgraph Input Layer
+            UI[Streamlit Dashboard]
+            API[FastAPI REST API]
+        end
+
+        subgraph Data Layer
+            DI[Data Ingestion]
+            VAL[Data Validation]
+        end
+
+        subgraph Feature Layer
+            FE[Feature Engineering]
+        end
+
+        subgraph Model Layer
+            ML[ML Models - RF / XGBoost]
+            LSTM[LSTM Model]
+        end
+
+        subgraph Risk Layer
+            RM[Risk Metrics - VaR, CVaR, Sharpe, etc.]
+        end
+
+        subgraph Output Layer
+            PRED[Predictions]
+            RISK_OUT[Risk Report]
+            EXP[Explainability - SHAP / Importance]
+        end
+    end
+
+    YF --> DI
+    UI --> API
+    API --> DI
+    DI --> VAL
+    VAL --> FE
+    FE --> ML
+    FE --> LSTM
+    FE --> RM
+    ML --> PRED
+    LSTM --> PRED
+    ML --> EXP
+    RM --> RISK_OUT
+    PRED --> UI
+    PRED --> API
+    RISK_OUT --> UI
+    RISK_OUT --> API
+    EXP --> UI
+    EXP --> API
+
+
+
+

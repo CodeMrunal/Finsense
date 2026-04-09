@@ -1,0 +1,85 @@
+%% FinSense - Class Diagram
+%% Render at https://mermaid.live or export to PNG/SVG for report
+classDiagram
+    class DataIngestion {
+        +fetch_historical_data(symbol, period)
+        +validate_data(data)
+    }
+
+    class FeatureEngineering {
+        +engineer_features(data)
+        +add_technical_indicators(df)
+    }
+
+    class MLForecaster {
+        -model
+        -scaler
+        +prepare_data(data, target_column)
+        +train(X, y)
+        +predict(X)
+        +get_feature_importance()
+        +save_model(path)
+        +load_model(path)
+    }
+
+    class LSTMForecaster {
+        -model
+        -scaler
+        -sequence_length
+        +create_sequences(data, target)
+        +prepare_data(data, target_column)
+        +build_model(input_shape)
+        +train(X_train, y_train, X_test, y_test)
+        +predict(X)
+        +forecast_future(last_sequence, steps)
+        +save_model(path)
+        +load_model(path)
+    }
+
+    class RiskMetrics {
+        -risk_free_rate
+        +calculate_returns(prices)
+        +calculate_volatility(returns)
+        +calculate_var(returns, confidence)
+        +calculate_cvar(returns, confidence)
+        +calculate_sharpe_ratio(returns)
+        +calculate_sortino_ratio(returns)
+        +analyze_risk(prices, benchmark)
+    }
+
+    class ForecastingService {
+        -data_ingestion: DataIngestion
+        -feature_engineering: FeatureEngineering
+        +prepare_data(symbol, period)
+        +train_ml_model(symbol, model_type)
+        +train_lstm_model(symbol, period)
+        +predict(symbol, model_type, forecast_days)
+    }
+
+    class RiskService {
+        -risk_metrics: RiskMetrics
+        +analyze_risk(symbol, benchmark, period)
+    }
+
+    class PersonalFinanceAdvisor {
+        -forecasting_service
+        -risk_service
+        +chat(user_message)
+        +get_prediction(symbol, days)
+        +get_risk_analysis(symbol)
+    }
+
+    DataIngestion --> FeatureEngineering : provides validated data
+    FeatureEngineering --> MLForecaster : engineered features
+    FeatureEngineering --> LSTMForecaster : engineered features
+    ForecastingService --> DataIngestion : uses
+    ForecastingService --> FeatureEngineering : uses
+    ForecastingService --> MLForecaster : uses
+    ForecastingService --> LSTMForecaster : uses
+    RiskService --> RiskMetrics : uses
+    PersonalFinanceAdvisor --> ForecastingService : uses
+    PersonalFinanceAdvisor --> RiskService : uses
+
+
+
+

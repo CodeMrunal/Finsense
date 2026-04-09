@@ -1,0 +1,94 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment variables (IMPORTANT: Keep API keys secret!)
+.env
+.env.local
+.env.*.local
+
+# Data and Models (Too large for GitHub)
+data/*.csv
+data/*.pkl
+data/*.h5
+data/raw/
+data/processed/
+models/*.pkl
+models/*.h5
+models/*.json
+models/ml/*.pkl
+models/lstm/*.h5
+models/lstm/*_scalers.pkl
+
+# Logs
+logs/
+*.log
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Streamlit
+.streamlit/
+
+# Docker
+.docker/
+
+# Chatbot vector store (can be regenerated)
+chatbot/vector_store/
+chatbot/knowledge_base/*.txt
+
+# PDFs (if large)
+*.pdf
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# Python cache
+.pytest_cache/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+

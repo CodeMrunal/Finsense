@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinSense - Project Report</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <style>
+    body { font-family: Georgia, serif; max-width: 800px; margin: 2em auto; padding: 0 1em; line-height: 1.6; }
+    h1 { text-align: center; border-bottom: 1px solid #333; padding-bottom: 0.5em; }
+    h2 { margin-top: 1.5em; font-size: 1.3em; }
+    h3 { margin-top: 1em; font-size: 1.1em; }
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { border: 1px solid #333; padding: 0.4em 0.6em; text-align: left; }
+    th { background: #f0f0f0; }
+    .mermaid { text-align: center; margin: 2em 0; }
+    .toc { margin: 2em 0; }
+    @media print { body { max-width: 100%; } .mermaid { page-break-inside: avoid; } }
+  </style>
+</head>
+<body>
+  <h1>FinSense: Hybrid AI System for Financial Intelligence</h1>
+
+  <h2>Table of Contents</h2>
+  <table class="toc">
+    <tr><th>Chapter No.</th><th>Contents</th><th>Page No.</th></tr>
+    <tr><td></td><td><strong>Abstract</strong></td><td>i</td></tr>
+    <tr><td>1.</td><td><strong>INTRODUCTION</strong></td><td>1</td></tr>
+    <tr><td></td><td>1.1 BACKGROUND</td><td>1</td></tr>
+    <tr><td></td><td>1.2 MOTIVATIONS</td><td>2</td></tr>
+    <tr><td></td><td>1.3 SCOPE OF THE PROJECT</td><td>3</td></tr>
+    <tr><td>2.</td><td><strong>PROJECT DESCRIPTION AND GOALS</strong></td><td>5</td></tr>
+    <tr><td></td><td>2.1 LITERATURE REVIEW (2.1.1 Machine Learning Based)</td><td>5</td></tr>
+    <tr><td></td><td>2.2 GAPS IDENTIFIED</td><td>6</td></tr>
+    <tr><td></td><td>2.3 OBJECTIVES, 2.4 PROBLEM STATEMENT, 2.5 PROJECT PLAN</td><td>6-7</td></tr>
+    <tr><td>3.</td><td><strong>TECHNICAL SPECIFICATION</strong></td><td>9</td></tr>
+    <tr><td></td><td>3.1 REQUIREMENTS (Functional, Non-Functional)</td><td>9</td></tr>
+    <tr><td></td><td>3.2 FEASIBILITY STUDY, 3.3 SYSTEM SPECIFICATION</td><td>10-12</td></tr>
+    <tr><td>4.</td><td><strong>DESIGN APPROACH AND DETAILS</strong></td><td>13</td></tr>
+    <tr><td></td><td>4.1 SYSTEM ARCHITECTURE, 4.2 DESIGN (DFD, Class Diagram)</td><td>13-15</td></tr>
+    <tr><td>5.</td><td><strong>METHODOLOGY AND TESTING</strong></td><td>17</td></tr>
+    <tr><td></td><td>Module Description, Testing</td><td>17-18</td></tr>
+    <tr><td></td><td><strong>REFERENCES</strong></td><td>19</td></tr>
+  </table>
+
+  <h2>Abstract</h2>
+  <p><strong>FinSense Is A Production-Ready Hybrid Artificial Intelligence System That Combines Machine Learning, Deep Learning, And Retrieval-Augmented Generation For Financial Market Analysis, Stock Price Forecasting, And Risk Assessment. The System Integrates Random Forest And XGBoost For Regression-Based Price Prediction, Long Short-Term Memory Networks For Time Series Forecasting, Comprehensive Risk Metrics Including Value At Risk And Conditional Value At Risk, And An Explainable Personal Finance Advisor Chatbot. This Document Describes The Background, Motivation, Scope, Technical Specifications, Design, Methodology, And Testing Of The FinSense Project, Along With A Literature Review And References.</strong></p>
+
+  <h2>1. INTRODUCTION</h2>
+  <h3>1.1 BACKGROUND</h3>
+  <p>Financial markets generate vast amounts of time-series and cross-sectional data. Predicting asset prices and quantifying risk are central to investment and risk management. FinSense is a hybrid AI system that integrates data ingestion (e.g., Yahoo Finance), feature engineering (RSI, MACD, Bollinger Bands, ATR, OBV, etc.), ML models (Random Forest, XGBoost), LSTM for time series, risk analytics (volatility, VaR, CVaR, Sharpe, Sortino, beta, max drawdown), explainability (SHAP, feature importance), and a RAG-based Personal Finance Advisor chatbot. The system is implemented in Python with a FastAPI backend and Streamlit dashboard.</p>
+  <h3>1.2 MOTIVATIONS</h3>
+  <p>Need for hybrid approaches; interpretability; unified platform; accessibility via API and dashboard; cost and simplicity using free data and optional LLM APIs.</p>
+  <h3>1.3 SCOPE OF THE PROJECT</h3>
+  <p>In scope: historical/live data, technical features, ML/LSTM training and forecasting, risk metrics, explainability, REST API, Streamlit dashboard, RAG chatbot. Out of scope: real-time brokerage, regulatory certification, guaranteed profitability.</p>
+
+  <h2>2. PROJECT DESCRIPTION AND GOALS</h2>
+  <h3>2.1 LITERATURE REVIEW — 2.1.1 Machine Learning Based</h3>
+  <p>Breiman (2001) Random Forests; Chen &amp; Guestrin (2016) XGBoost; Hochreiter &amp; Schmidhuber (1997) LSTM; Sharpe (1966, 1994) Sharpe ratio; Rockafellar &amp; Uryasev (2000) CVaR; Lundberg &amp; Lee (2017) SHAP; Lewis et al. (2020) RAG; and 50+ references in the full REFERENCES section of PROJECT_REPORT.md.</p>
+  <h3>2.2 GAPS IDENTIFIED</h3>
+  <p>Integrated hybrid system; unified API and UI; RAG with live risk/prediction context; reproducibility.</p>
+  <h3>2.3 OBJECTIVES</h3>
+  <p>Design hybrid AI (ML + LSTM); provide risk module; ensure explainability; deliver REST API and dashboard; build RAG chatbot; document architecture and metrics.</p>
+  <h3>2.4 PROBLEM STATEMENT</h3>
+  <p>Analysts need a single, extensible platform for data, features, multiple models, risk, and conversational AI—FinSense addresses this with an open, modular system.</p>
+  <h3>2.5 PROJECT PLAN</h3>
+  <p>Phases: Requirements &amp; architecture → Data &amp; features → ML/LSTM training → Risk &amp; explainability → API &amp; dashboard → RAG &amp; testing → Documentation.</p>
+
+  <h2>3. TECHNICAL SPECIFICATION</h2>
+  <h3>3.1 REQUIREMENTS</h3>
+  <p>Functional: F1–F11 (data ingestion, features, ML/LSTM training and prediction, risk, API, explainability, dashboard, chatbot, config). Non-functional: NF1–NF6 (Python 3.10+, response time, modularity, logging, config, docs).</p>
+  <h3>3.2 FEASIBILITY STUDY</h3>
+  <p>Technical: Yahoo Finance and mature Python libraries. Economic: low cost for research/education. Social: acceptable for research with disclaimers.</p>
+  <h3>3.3 SYSTEM SPECIFICATION</h3>
+  <p>Hardware: 4+ cores CPU, 8+ GB RAM, 2+ GB storage. Software: Python 3.10+, pandas, scikit-learn, XGBoost, TensorFlow, FastAPI, Streamlit, LangChain, SHAP, yfinance.</p>
+
+  <h2>4. DESIGN APPROACH AND DETAILS</h2>
+  <h3>4.1 SYSTEM ARCHITECTURE</h3>
+  <p>Layered: Presentation (Streamlit, FastAPI) → Services (ForecastingService, RiskService) → Core (DataIngestion, FeatureEngineering, MLForecaster, LSTMForecaster, RiskMetrics, explainability) → Data &amp; Config.</p>
+  <h3>4.2 DESIGN</h3>
+  <h4>4.2.1 Data Flow Diagram</h4>
+  <p>High-level data flow: Yahoo Finance → Data Ingestion → Validation → Feature Engineering → ML/LSTM/Risk → Predictions / Risk Report / Explainability → API &amp; Dashboard.</p>
+  <div class="mermaid">
+flowchart LR
+  subgraph External
+    YF[Yahoo Finance API]
+  end
+  subgraph FinSense
+    DI[Data Ingestion] --> VAL[Validation] --> FE[Feature Engineering]
+    FE --> ML[ML Models]
+    FE --> LSTM[LSTM]
+    FE --> RM[Risk Metrics]
+    ML --> PRED[Predictions]
+    LSTM --> PRED
+    ML --> EXP[Explainability]
+    RM --> RISK_OUT[Risk Report]
+  end
+  YF --> DI
+  PRED --> UI[Dashboard / API]
+  RISK_OUT --> UI
+  EXP --> UI
+  </div>
+  <h4>4.2.2 Class Diagram</h4>
+  <p>Main classes: DataIngestion, FeatureEngineering, MLForecaster, LSTMForecaster, RiskMetrics, ForecastingService, RiskService, PersonalFinanceAdvisor. Relationships: ForecastingService uses DataIngestion, FeatureEngineering, MLForecaster, LSTMForecaster; RiskService uses RiskMetrics; PersonalFinanceAdvisor uses ForecastingService and RiskService.</p>
+  <div class="mermaid">
+classDiagram
+  class DataIngestion { fetch_historical_data() validate_data() }
+  class FeatureEngineering { engineer_features() }
+  class MLForecaster { prepare_data() train() predict() get_feature_importance() }
+  class LSTMForecaster { create_sequences() prepare_data() build_model() train() predict() }
+  class RiskMetrics { calculate_returns() calculate_volatility() calculate_var() calculate_sharpe_ratio() analyze_risk() }
+  class ForecastingService { prepare_data() train_ml_model() train_lstm_model() predict() }
+  class RiskService { analyze_risk() }
+  class PersonalFinanceAdvisor { chat() }
+  ForecastingService --> DataIngestion
+  ForecastingService --> FeatureEngineering
+  ForecastingService --> MLForecaster
+  ForecastingService --> LSTMForecaster
+  RiskService --> RiskMetrics
+  PersonalFinanceAdvisor --> ForecastingService
+  PersonalFinanceAdvisor --> RiskService
+  </div>
+
+  <h2>5. METHODOLOGY AND TESTING</h2>
+  <h3>Module Description</h3>
+  <p>Data ingestion (src/data), Feature engineering (src/features), ML models (src/models/ml_models), LSTM (src/models/lstm_model), Risk (src/risk), Explainability (src/explainability), ForecastingService, RiskService, Backend API, Dashboard, Chatbot, Config.</p>
+  <h3>Testing</h3>
+  <p>Unit/component tests for data, features, risk; integration tests for end-to-end flow; model evaluation (MSE, RMSE, MAE, MAPE, R²); API validation via FastAPI /docs.</p>
+
+  <h2>REFERENCES</h2>
+  <p>Full list of 50+ references is in <code>docs/PROJECT_REPORT.md</code> (REFERENCES section). Key: [1] Breiman Random Forests, [2] Chen &amp; Guestrin XGBoost, [9] Hochreiter &amp; Schmidhuber LSTM, [19][20] Sharpe ratio, [21] Rockafellar &amp; Uryasev CVaR, [26] Lundberg &amp; Lee SHAP, [30] Lewis et al. RAG.</p>
+
+  <p><em>For complete report with all 52 references and full text, see PROJECT_REPORT.md. To generate PDF: use Pandoc (see PDF_GENERATION.md) or open this HTML in browser and File → Print → Save as PDF.</em></p>
+
+  <script>
+    mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+  </script>
+</body>
+</html>
+
+
+
+
